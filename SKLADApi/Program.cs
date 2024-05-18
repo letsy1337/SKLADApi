@@ -42,6 +42,8 @@ builder.Services.AddDbContext<DeliveryStatusesContext>(opt =>
     opt.UseSqlServer("data source=Dmytro;initial catalog=SKLAD;trusted_connection=true;integrated security=True; TrustServerCertificate=True"));
 builder.Services.AddDbContext<DeliveryPointsContext>(opt =>
     opt.UseSqlServer("data source=Dmytro;initial catalog=SKLAD;trusted_connection=true;integrated security=True; TrustServerCertificate=True"));
+builder.Services.AddDbContext<DriverRoutesContext>(opt =>
+    opt.UseSqlServer("data source=Dmytro;initial catalog=SKLAD;trusted_connection=true;integrated security=True; TrustServerCertificate=True"));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
