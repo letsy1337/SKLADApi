@@ -1,0 +1,6 @@
+@SKLADApi_HostAddress = http://localhost:5152
+
+GET {{SKLADApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
