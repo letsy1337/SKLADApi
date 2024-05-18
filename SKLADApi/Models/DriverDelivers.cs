@@ -8,7 +8,6 @@ namespace SKLADApi.Models
         public Guid Driver_id { get; set; }
         public Guid Order_id { get; set; }
         public Guid Status_id { get; set; }
-        public string? Recommended_route {  get; set; }
         public decimal Total_cost { get; set; }
         public Guid Deliver_to { get; set; }
     }
