@@ -10,5 +10,6 @@ namespace SKLADApi.Models
         public Guid Status_id { get; set; }
         public decimal Total_cost { get; set; }
         public Guid Deliver_to { get; set; }
+        public DateTime Date_created { get; set; }
     }
 }
