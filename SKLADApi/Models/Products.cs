@@ -7,6 +7,7 @@
         public string Description { get; set; } 
         public Guid Category_id { get; set; }
         public Guid Warehouse_id { get; set; }
+        public Guid Supplier_id { get; set; }
         public decimal Price { get; set; }
         public int? Quantity { get; set; }
         public Guid? Image_id { get; set; }
