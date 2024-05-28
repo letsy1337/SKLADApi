@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using SKLADApi.Models;
 
@@ -125,6 +126,47 @@ namespace SKLADApi.Controllers
 
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        // DELETE: api/Users/5
+        [HttpDelete("/api/Users/Delete/{id}")]
+        public async Task<IActionResult> DeleteUserProcedure(Guid id)
+        {
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
+
+            Users deletedUser = null;
+
+            using (var connection = new SqlConnection(_context.Database.GetDbConnection().ConnectionString))
+            {
+                using (var command = new SqlCommand("DeleteUser", connection))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Id", id);
+
+                    await connection.OpenAsync();
+
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        if (reader.Read())
+                        {
+                            deletedUser = new Users
+                            {
+                                Id = reader.GetGuid(reader.GetOrdinal("Id"))
+                            };
+                        }
+                    }
+                }
+            }
+
+            if (deletedUser == null)
+            {
+                return NotFound();
+            }
 
             return NoContent();
         }
