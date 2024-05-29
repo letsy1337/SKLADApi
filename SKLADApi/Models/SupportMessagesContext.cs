@@ -12,4 +12,5 @@ namespace SKLADApi.Models
 
         public DbSet<SupportMessages> SupportMessages { get; set; } = null!;
     }
+
 }

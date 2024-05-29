@@ -56,6 +56,7 @@ namespace SKLADApi.Controllers
             }
 
             _context.Entry(supportMessage).State = EntityState.Modified;
+            _context.Entry(supportMessage).Property(nameof(supportMessage.Message_number)).IsModified = false;
 
             try
             {
@@ -85,6 +86,7 @@ namespace SKLADApi.Controllers
             {
                 return Problem("Entity set is null.");
             }
+
             _context.SupportMessages.Add(supportMessage);
             try
             {
